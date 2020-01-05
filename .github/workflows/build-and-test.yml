@@ -1,4 +1,4 @@
-name: build-and-test
+name: Build and Test
 on:
   push:
     branches:
@@ -37,6 +37,12 @@ jobs:
       run: go build -v .
 
     - name: Test
-      run: go test -v .
+      run: go test -race -coverprofile=coverage.txt -covermode=atomic -v
       env:
         LANG: en
+
+    - name: Upload coverage to Codecov
+        uses: codecov/codecov-action@v1
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+          file: ./coverage.txt
