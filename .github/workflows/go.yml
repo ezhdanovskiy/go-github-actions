@@ -31,14 +31,3 @@ jobs:
       run: go test -v .
       env:
         LANG: en
-        FIRST_NAME: Mona
-        middle_name: The
-        Last_Name: Octocat
-
-    - name: Envs
-      run: go env
-      env:
-        LANG: en
-        FIRST_NAME: Mona
-        middle_name: The
-        Last_Name: Octocat
